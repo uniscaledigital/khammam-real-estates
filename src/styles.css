@@ -1,0 +1,106 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  /* New Luxury Brand Colors */
+  --color-ivory: #FAF7EF;
+  --color-cream: #FFFDF7;
+  --color-champagne: #F4E7B5;
+  --color-charcoal: #2C2C2C;
+  --color-gold: #D4AF37;
+  --color-yellow: #F2C94C;
+
+  --font-display: "Cinzel", "Poppins", serif;
+  --font-sub: "Poppins", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-num: "Manrope", sans-serif;
+}
+
+:root {
+  --radius: 1.25rem; /* 20px border radius base for premium feel */
+  --background: #FAF7EF; /* Warm Ivory */
+  --foreground: #2C2C2C; /* Rich Charcoal */
+  
+  --card: #FFFDF7; /* Cream */
+  --card-foreground: #2C2C2C;
+  
+  --popover: #FFFDF7;
+  --popover-foreground: #2C2C2C;
+  
+  --primary: #D4AF37; /* Luxury Gold */
+  --primary-foreground: #121212; /* Black Text */
+  
+  --brand: #F2C94C; /* Brand Yellow */
+  --brand-foreground: #121212;
+  
+  --secondary: #121212; /* Black */
+  --secondary-foreground: #D4AF37; /* Gold */
+  
+  --muted: #F4E7B5; /* Champagne */
+  --muted-foreground: #666666;
+  
+  --accent: #F4E7B5; /* Champagne */
+  --accent-foreground: #121212;
+  
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+  
+  --border: #F4E7B5; /* Champagne border */
+  --input: #F4E7B5;
+  --ring: #D4AF37;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  .font-sub { font-family: var(--font-sub); }
+  .font-num { font-family: var(--font-num); }
+}
+
+/* Custom Luxury Animations */
+.animate-fade-up {
+  animation: fadeUp 300ms ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
