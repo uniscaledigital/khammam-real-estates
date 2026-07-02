@@ -49,17 +49,17 @@ function Properties() {
 
   return (
     <>
-      <section className="bg-primary py-14 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4">
-          <h1 className="font-display text-3xl font-bold md:text-4xl">All Properties</h1>
-          <p className="mt-2 text-primary-foreground/80">Filter through every listing across Khammam.</p>
+      <section className="bg-primary py-12 md:py-16 lg:py-20 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">All Properties</h1>
+          <p className="mt-2 text-sm sm:text-base text-primary-foreground/80">Filter through every listing across Khammam.</p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-10">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-8 md:py-10">
         <div className="mb-8 rounded-2xl border bg-card p-4 shadow-sm">
           <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><SlidersHorizontal className="h-4 w-4" /> Filters</div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <Select value={search.listing_type ?? "any"} onValueChange={(v) => update({ listing_type: v === "any" ? undefined : v })}>
               <SelectTrigger><SelectValue placeholder="Listing" /></SelectTrigger>
               <SelectContent>
@@ -106,7 +106,7 @@ function Properties() {
         ) : data?.properties.length === 0 ? (
           <div className="py-20 text-center text-muted-foreground">No properties match your filters.</div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {(data?.properties ?? []).map((p) => <PropertyCard key={p.id} p={p as any} />)}
           </div>
         )}

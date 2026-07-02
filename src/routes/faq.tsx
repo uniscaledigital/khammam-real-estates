@@ -35,15 +35,15 @@ export const Route = createFileRoute("/faq")({
 function FAQ() {
   return (
     <>
-      <section className="bg-primary py-14 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4">
-          <h1 className="font-display text-3xl font-bold md:text-4xl">Frequently Asked Questions</h1>
+      <section className="bg-primary py-12 md:py-16 lg:py-20 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Frequently Asked Questions</h1>
         </div>
       </section>
-      <section className="mx-auto max-w-3xl px-4 py-12">
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-10 md:py-12 lg:py-16">
         <Accordion type="single" collapsible className="rounded-2xl border bg-card shadow-sm">
           {FAQS.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="px-5">
+            <AccordionItem key={i} value={`item-${i}`} className="px-3 sm:px-5">
               <AccordionTrigger className="text-left font-display text-base font-semibold">{f.q}</AccordionTrigger>
               <AccordionContent className="text-sm text-foreground/80">{f.a}</AccordionContent>
             </AccordionItem>

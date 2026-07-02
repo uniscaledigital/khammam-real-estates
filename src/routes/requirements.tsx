@@ -34,16 +34,16 @@ function Requirements() {
   });
   return (
     <>
-      <section className="bg-primary py-14 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4">
-          <h1 className="font-display text-3xl font-bold md:text-4xl">Post Your Requirement</h1>
-          <p className="mt-2 text-primary-foreground/80">Tell us what you need — our team will curate matches and call you within 48 hours.</p>
+      <section className="bg-primary py-12 md:py-16 lg:py-20 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Post Your Requirement</h1>
+          <p className="mt-2 text-sm sm:text-base text-primary-foreground/80">Tell us what you need — our team will curate matches and call you within 48 hours.</p>
         </div>
       </section>
-      <section className="mx-auto max-w-3xl px-4 py-12">
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-10 md:py-12 lg:py-16">
         <form
           onSubmit={(e) => { e.preventDefault(); mut.mutate(form); }}
-          className="grid gap-4 rounded-2xl border bg-card p-6 shadow-sm sm:grid-cols-2"
+          className="grid gap-4 rounded-2xl border bg-card p-4 sm:p-6 shadow-sm sm:grid-cols-2"
         >
           <Field label="Full Name *"><Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></Field>
           <Field label="Phone *"><Input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} /></Field>

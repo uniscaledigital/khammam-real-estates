@@ -56,10 +56,10 @@ export function PropertyCard({ p }: { p: PropertyCardData }) {
         </button>
       </Link>
       
-      <div className="flex flex-col flex-1 p-6 space-y-4">
+      <div className="flex flex-col flex-1 p-4 md:p-5 space-y-3 md:space-y-4">
         <div>
           <Link to="/property/$slug" params={{ slug: p.slug }} className="block">
-            <h3 className="line-clamp-1 font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+            <h3 className="line-clamp-1 font-display text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
               {p.title}
             </h3>
           </Link>
@@ -68,7 +68,7 @@ export function PropertyCard({ p }: { p: PropertyCardData }) {
           </p>
         </div>
 
-        <div className="flex items-center gap-4 text-sm text-muted-foreground font-medium">
+        <div className="flex flex-wrap items-center gap-3 md:gap-4 text-xs md:text-sm text-muted-foreground font-medium">
           {(p.bedrooms ?? 0) > 0 && (
             <span className="flex items-center gap-1.5"><Bed className="h-4 w-4 text-primary/70" /> {p.bedrooms} Beds</span>
           )}
@@ -80,19 +80,19 @@ export function PropertyCard({ p }: { p: PropertyCardData }) {
           )}
         </div>
         
-        <div className="flex items-end justify-between border-t border-border/60 pt-4 mt-auto">
+        <div className="flex items-end justify-between border-t border-border/60 pt-3 md:pt-4 mt-auto">
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-0.5">Price</p>
-            <div className="font-num text-xl font-bold text-primary">{formatINR(p.price)}</div>
+            <div className="font-num text-lg md:text-xl font-bold text-primary">{formatINR(p.price)}</div>
           </div>
           <div className="text-xs font-semibold px-2.5 py-1 rounded-md bg-accent/50 text-secondary">{statusLabel(p.status)}</div>
         </div>
         
-        <div className="grid grid-cols-2 gap-3 pt-2">
-          <a href={`https://wa.me/918186871820?text=Hi%20Khammam%20Real%20Estates%2C%0A%0AI%20am%20interested%20in%3A%0A%0A${encodeURIComponent(p.title)}%0A%0APlease%20share%20complete%20details.`} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-secondary transition-all shadow-sm">
-            <MessageCircle className="h-4 w-4" /> WhatsApp
+        <div className="grid grid-cols-2 gap-2 md:gap-3 pt-2">
+          <a href={`https://wa.me/918186871820?text=Hi%20Khammam%20Real%20Estates%2C%0A%0AI%20am%20interested%20in%3A%0A%0A${encodeURIComponent(p.title)}%0A%0APlease%20share%20complete%20details.`} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-full bg-secondary px-3 md:px-4 py-2 md:py-2.5 text-xs md:text-sm font-semibold text-primary hover:bg-primary hover:text-secondary transition-all shadow-sm min-h-[44px]">
+            <MessageCircle className="h-3.5 w-3.5 md:h-4 md:w-4 shrink-0" /> <span className="truncate">WhatsApp</span>
           </a>
-          <Link to="/property/$slug" params={{ slug: p.slug }} className="inline-flex items-center justify-center rounded-full border border-primary bg-transparent px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary hover:text-secondary transition-all shadow-sm">
+          <Link to="/property/$slug" params={{ slug: p.slug }} className="inline-flex items-center justify-center rounded-full border border-primary bg-transparent px-3 md:px-4 py-2 md:py-2.5 text-xs md:text-sm font-semibold text-primary hover:bg-primary hover:text-secondary transition-all shadow-sm min-h-[44px]">
             View Details
           </Link>
         </div>

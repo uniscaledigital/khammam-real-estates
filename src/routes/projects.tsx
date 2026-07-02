@@ -34,22 +34,22 @@ function Projects() {
           <div className="absolute inset-0 bg-gradient-to-r from-secondary/50 via-transparent to-secondary/50"></div>
         </div>
         
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center animate-fade-up">
-          <span className="mb-4 inline-block rounded-full border border-primary/30 bg-secondary/50 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 md:px-8 text-center animate-fade-up">
+          <span className="mb-4 inline-block rounded-full border border-primary/30 bg-secondary/50 px-3 sm:px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md">
             OUR PROJECT PORTFOLIO
           </span>
-          <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
             Our Preferred <span className="text-primary">Projects</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-white/80 md:text-xl">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg font-medium text-white/80 md:text-xl">
             Explore our verified DTCP layouts, residential ventures, premium townships, and investment opportunities across Khammam.
           </p>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="mx-auto -mt-16 max-w-7xl px-4 relative z-20">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto -mt-16 max-w-7xl px-4 sm:px-6 md:px-8 relative z-20">
+        <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {mockProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -57,18 +57,18 @@ function Projects() {
       </section>
 
       {/* Brochure Section */}
-      <section className="mx-auto mt-24 max-w-[1000px] px-6">
-        <div className="text-center mb-10">
-           <h2 className="font-display text-3xl font-bold text-secondary md:text-4xl">
+      <section className="mx-auto mt-16 md:mt-24 max-w-[1000px] px-4 sm:px-6 md:px-8">
+        <div className="text-center mb-8 md:mb-10">
+           <h2 className="font-display text-2xl sm:text-3xl font-bold text-secondary md:text-4xl">
              Official Project <span className="text-primary">Brochure</span>
            </h2>
-           <p className="mt-3 text-secondary/70 font-medium max-w-xl mx-auto">
+           <p className="mt-3 text-sm sm:text-base text-secondary/70 font-medium max-w-xl mx-auto">
              Complete project list and price details released by Khammam Real Estates.
            </p>
         </div>
         
         <div className="relative group overflow-hidden rounded-[20px] border-[3px] border-primary bg-[#FAF7EF] p-4 shadow-[0_10px_40px_rgba(212,175,55,0.15)]">
-           <div className="relative overflow-hidden rounded-xl bg-muted aspect-[3/4] md:aspect-auto md:h-[800px]">
+           <div className="relative overflow-hidden rounded-xl bg-muted aspect-[3/4] md:aspect-auto md:max-h-[80vh]">
              {/* Using a placeholder for now since no poster was identified */}
              <img 
                src="/images/project-brochure.jpg" 

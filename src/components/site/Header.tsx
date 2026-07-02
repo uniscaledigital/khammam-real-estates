@@ -30,21 +30,35 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* Body scroll lock when mobile menu is open */
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("nav-open");
+    } else {
+      document.body.classList.remove("nav-open");
+    }
+    return () => {
+      document.body.classList.remove("nav-open");
+    };
+  }, [open]);
+
+  const closeMobileMenu = () => setOpen(false);
+
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out ${
-        scrolled 
-          ? "bg-[#FAF7EF]/85 backdrop-blur-[16px] border-b border-primary/30 shadow-sm" 
+        scrolled
+          ? "bg-[#FAF7EF]/85 backdrop-blur-[16px] border-b border-primary/30 shadow-sm"
           : "bg-[#FAF7EF]/40 backdrop-blur-sm border-b border-primary/10"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6 md:h-24">
+      <div className="mx-auto flex h-16 md:h-20 lg:h-24 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 md:px-8">
         <Link to="/" className="flex items-center group py-1">
-          <div className="flex items-center justify-center rounded-full bg-[#1A1A1A] p-2 shadow-lg transition-transform duration-300 group-hover:scale-105 border border-primary/30">
-            <img 
-              src="/khammam_realestate_logo.png" 
-              alt="Khammam Real Estates Logo" 
-              className="h-16 md:h-20 w-auto object-contain scale-[1.1] ml-1 mr-1"
+          <div className="flex items-center justify-center rounded-full bg-[#1A1A1A] p-1.5 md:p-2 shadow-lg transition-transform duration-300 group-hover:scale-105 border border-primary/30">
+            <img
+              src="/khammam_realestate_logo.png"
+              alt="Khammam Real Estates Logo"
+              className="h-12 md:h-16 lg:h-20 w-auto object-contain scale-[1.1] ml-1 mr-1"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
@@ -70,7 +84,7 @@ export function Header() {
           <a href="tel:+918186871820" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-primary bg-card px-5 text-sm font-semibold text-secondary transition-colors duration-300 hover:bg-primary hover:text-secondary">
             <Phone className="h-4 w-4" /> 8186871820
           </a>
-          
+
           <a
             href="https://wa.me/918186871820"
             target="_blank"
@@ -92,47 +106,54 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4 lg:hidden">
-           <button
-             className="rounded-full p-2 text-secondary hover:bg-primary/20 transition-colors"
-             onClick={() => setOpen((v) => !v)}
-             aria-label="Toggle menu"
-           >
-             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-           </button>
+          <button
+            className="rounded-full p-2.5 text-secondary hover:bg-primary/20 transition-colors"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
 
-      {open && (
-        <div className="border-t border-primary/20 bg-[#FAF7EF]/95 backdrop-blur-md shadow-xl lg:hidden animate-fade-up">
-          <nav className="mx-auto flex max-w-7xl flex-col px-6 py-6 gap-2">
-            {NAV_KEYS.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-base font-semibold text-secondary hover:bg-primary/20 hover:text-primary transition-colors"
-                activeProps={{ className: "text-primary bg-primary/10 border-l-4 border-primary" }}
-              >
-                {t(n.labelKey, n.defaultText)}
-              </Link>
-            ))}
-            
-            <div className="mt-4 flex flex-col gap-3 pt-4 border-t border-primary/20">
-              <a href="tel:+918186871820" className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-card px-4 py-3 text-sm font-bold text-secondary">
-                <Phone className="h-4 w-4 text-primary" /> Call Us
-              </a>
-              <a href="https://wa.me/918186871820" className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-sm">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
-              {user ? (
-                <Link to="/account" onClick={() => setOpen(false)} className="rounded-xl border border-primary bg-secondary px-4 py-3 text-sm font-bold text-center text-primary hover:bg-primary hover:text-secondary">{t('nav.account', 'Account')}</Link>
-              ) : (
-                <Link to="/auth" onClick={() => setOpen(false)} className="rounded-xl border border-primary bg-secondary px-4 py-3 text-center text-sm font-bold text-primary hover:bg-primary hover:text-secondary">{t('nav.login', 'Login')}</Link>
-              )}
-            </div>
-          </nav>
-        </div>
-      )}
+      {/* Mobile menu – full-height overlay with slide transition */}
+      <div
+        className="fixed inset-0 top-16 z-40 bg-[#FAF7EF]/98 backdrop-blur-lg overflow-y-auto lg:hidden"
+        style={{
+          transform: open ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          pointerEvents: open ? "auto" : "none",
+        }}
+        aria-hidden={!open}
+      >
+        <nav className="mx-auto flex max-w-7xl flex-col px-4 sm:px-6 py-6 gap-2">
+          {NAV_KEYS.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              onClick={closeMobileMenu}
+              className="rounded-xl py-3.5 px-5 text-base font-semibold text-secondary hover:bg-primary/20 hover:text-primary transition-colors"
+              activeProps={{ className: "text-primary bg-primary/10 border-l-4 border-primary" }}
+            >
+              {t(n.labelKey, n.defaultText)}
+            </Link>
+          ))}
+
+          <div className="mt-4 flex flex-col gap-3 pt-4 border-t border-primary/20">
+            <a href="tel:+918186871820" className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-card py-3.5 px-5 text-sm font-bold text-secondary">
+              <Phone className="h-4 w-4 text-primary" /> Call Us
+            </a>
+            <a href="https://wa.me/918186871820" className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 px-5 text-sm font-bold text-white shadow-sm">
+              <MessageCircle className="h-4 w-4" /> WhatsApp
+            </a>
+            {user ? (
+              <Link to="/account" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-sm font-bold text-center text-primary hover:bg-primary hover:text-secondary">{t('nav.account', 'Account')}</Link>
+            ) : (
+              <Link to="/auth" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-center text-sm font-bold text-primary hover:bg-primary hover:text-secondary">{t('nav.login', 'Login')}</Link>
+            )}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }

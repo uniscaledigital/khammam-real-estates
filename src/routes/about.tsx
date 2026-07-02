@@ -18,18 +18,18 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <section className="bg-primary py-20 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 text-center">
+      <section className="bg-primary py-16 md:py-20 lg:py-24 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-brand">About Us</p>
-          <h1 className="mt-2 font-display text-4xl font-bold md:text-5xl">Building Trust, One Home at a Time</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/80">Khammam Real Estates has helped 3000+ families find homes across Khammam since 2010.</p>
+          <h1 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl font-bold">Building Trust, One Home at a Time</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-primary-foreground/80">Khammam Real Estates has helped 3000+ families find homes across Khammam since 2010.</p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 md:py-16 lg:py-20">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-bold text-primary">Our Story</h2>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-primary">Our Story</h2>
             <p className="mt-4 text-foreground/80">
               Founded in 2010, Khammam Real Estates began as a small family-run consultancy in Khammam with one promise — clear, honest advice for every client.
               Today, we are one of Khammam's most-recommended real estate firms, working across the city's fastest-growing corridors.
@@ -38,12 +38,12 @@ function About() {
               We work with reputed developers, vet every project for legal hygiene, and walk you through every step — site visits, documentation, registration and beyond.
             </p>
           </div>
-          <img className="rounded-2xl object-cover shadow-lg" src="https://images.unsplash.com/photo-1577760258779-e787a1733016?w=1200" alt="Team meeting" />
+          <img className="rounded-2xl object-cover shadow-lg aspect-[16/10] w-full" src="https://images.unsplash.com/photo-1577760258779-e787a1733016?w=1200" alt="Team meeting" />
         </div>
       </section>
 
-      <section className="bg-accent/40 py-16">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:grid-cols-2 md:grid-cols-4">
+      <section className="bg-accent/40 py-12 md:py-16 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 grid-cols-2 md:grid-cols-4">
           {[
             { icon: Building2, k: "1200+", v: "Properties Sold" },
             { icon: Users, k: "3000+", v: "Happy Families" },
@@ -59,9 +59,9 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="mb-8 text-center font-display text-3xl font-bold text-primary">Our Mission & Values</h2>
-        <div className="grid gap-6 md:grid-cols-3">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 md:py-16 lg:py-20">
+        <h2 className="mb-6 md:mb-8 text-center font-display text-2xl sm:text-3xl font-bold text-primary">Our Mission & Values</h2>
+        <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 md:grid-cols-3">
           {[
             { t: "Integrity", d: "We act in our clients' interest, always. No hidden fees, no inflated promises." },
             { t: "Expertise", d: "Deep, locality-level knowledge of Khammam's residential and commercial markets." },
