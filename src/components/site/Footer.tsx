@@ -30,13 +30,13 @@ export function Footer() {
         <div>
           <h4 className="mb-6 font-display text-lg font-bold tracking-wider text-primary">{t('footer.quick_links')}</h4>
           <ul className="space-y-3 text-sm font-medium text-white/80">
-            <li><Link to="/" className="transition-colors hover:text-primary">{t('nav.home')}</Link></li>
-            <li><Link to="/about" className="transition-colors hover:text-primary">{t('nav.about')}</Link></li>
-            <li><Link to="/properties" className="transition-colors hover:text-primary">{t('nav.properties')}</Link></li>
-            <li><Link to="/projects" className="transition-colors hover:text-primary">{t('nav.projects')}</Link></li>
-            <li><Link to="/requirements" className="transition-colors hover:text-primary">{t('nav.post_requirement')}</Link></li>
-            <li><Link to="/faq" className="transition-colors hover:text-primary">{t('nav.faq')}</Link></li>
-            <li><Link to="/contact" className="transition-colors hover:text-primary">{t('nav.contact')}</Link></li>
+            <li><Link to="/" className="transition-colors hover:text-primary">{t('nav.home', 'Home')}</Link></li>
+            <li><Link to="/about" className="transition-colors hover:text-primary">{t('nav.about', 'About')}</Link></li>
+            <li><Link to="/properties" className="transition-colors hover:text-primary">{t('nav.properties', 'Properties')}</Link></li>
+            <li><Link to="/projects" className="transition-colors hover:text-primary">{t('nav.projects', 'Projects')}</Link></li>
+            <li><Link to="/requirements" className="transition-colors hover:text-primary">{t('nav.post_requirement', 'Post Requirement')}</Link></li>
+            <li><Link to="/faq" className="transition-colors hover:text-primary">{t('nav.faq', 'FAQ')}</Link></li>
+            <li><Link to="/contact" className="transition-colors hover:text-primary">{t('nav.contact', 'Contact')}</Link></li>
           </ul>
         </div>
 
