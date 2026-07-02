@@ -3,7 +3,7 @@ import { Phone, MessageCircle, Menu, X, User as UserIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import { useTranslation } from "react-i18next";
+
 
 
 const NAV_KEYS = [
@@ -20,8 +20,6 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user } = useAuth();
-  const { t } = useTranslation();
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -74,7 +72,7 @@ export function Header() {
               className="group relative px-4 py-2 text-sm font-semibold text-secondary transition-colors duration-300 hover:text-primary"
               activeProps={{ className: "!text-primary font-bold" }}
             >
-              {t(n.labelKey, n.defaultText)}
+              {n.defaultText}
               <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-primary transition-all duration-300 group-hover:w-full group-[.active]:w-full"></span>
             </Link>
           ))}
@@ -96,11 +94,11 @@ export function Header() {
 
           {user ? (
             <Link to="/account" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-primary bg-secondary px-5 text-sm font-semibold text-primary transition-colors duration-300 hover:bg-primary hover:text-secondary">
-              <UserIcon className="h-4 w-4" /> {t('nav.account', 'Account')}
+              <UserIcon className="h-4 w-4" /> Account
             </Link>
           ) : (
             <Link to="/auth" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-primary bg-secondary px-5 text-sm font-semibold text-primary transition-colors duration-300 hover:bg-primary hover:text-secondary">
-              <UserIcon className="h-4 w-4" /> {t('nav.login', 'Login')}
+              <UserIcon className="h-4 w-4" /> Login
             </Link>
           )}
         </div>
@@ -135,7 +133,7 @@ export function Header() {
               className="rounded-xl py-3.5 px-5 text-base font-semibold text-secondary hover:bg-primary/20 hover:text-primary transition-colors"
               activeProps={{ className: "text-primary bg-primary/10 border-l-4 border-primary" }}
             >
-              {t(n.labelKey, n.defaultText)}
+              {n.defaultText}
             </Link>
           ))}
 
@@ -147,9 +145,9 @@ export function Header() {
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             {user ? (
-              <Link to="/account" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-sm font-bold text-center text-primary hover:bg-primary hover:text-secondary">{t('nav.account', 'Account')}</Link>
+              <Link to="/account" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-sm font-bold text-center text-primary hover:bg-primary hover:text-secondary">Account</Link>
             ) : (
-              <Link to="/auth" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-center text-sm font-bold text-primary hover:bg-primary hover:text-secondary">{t('nav.login', 'Login')}</Link>
+              <Link to="/auth" onClick={closeMobileMenu} className="rounded-xl border border-primary bg-secondary py-3.5 px-5 text-center text-sm font-bold text-primary hover:bg-primary hover:text-secondary">Login</Link>
             )}
           </div>
         </nav>

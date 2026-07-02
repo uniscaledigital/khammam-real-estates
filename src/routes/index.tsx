@@ -6,7 +6,7 @@ import { PropertyCard } from "@/components/site/PropertyCard";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+
 
 const featuredQO = queryOptions({
   queryKey: ["properties", "featured"],
@@ -34,7 +34,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Hero() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useState({
     location: "",
@@ -94,12 +93,12 @@ function Hero() {
         <div className="mt-6 sm:mt-8 w-full max-w-5xl rounded-2xl sm:rounded-[24px] bg-card p-3 sm:p-4 md:p-6 shadow-2xl shadow-black/50">
            <form onSubmit={handleSearch} className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-end text-left">
               <div className="flex flex-col gap-2">
-                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">{t('home.search_location')}</label>
+                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">Location</label>
                  <div className="relative">
                    <MapPin className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-primary" />
                    <input 
                      type="text" 
-                     placeholder={t('home.search_any_location')}
+                     placeholder="Any Location"
                      className="w-full rounded-full border-none bg-background py-3.5 pl-11 pr-4 text-sm font-medium outline-none ring-1 ring-border focus:ring-2 focus:ring-primary transition-all"
                      value={searchParams.location}
                      onChange={(e) => setSearchParams({...searchParams, location: e.target.value})}
@@ -107,50 +106,50 @@ function Hero() {
                  </div>
               </div>
               <div className="flex flex-col gap-2">
-                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">{t('home.search_type')}</label>
+                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">Property Type</label>
                  <select 
                    className="w-full appearance-none rounded-full border-none bg-background py-3.5 px-6 text-sm font-medium outline-none ring-1 ring-border focus:ring-2 focus:ring-primary transition-all"
                    value={searchParams.type}
                    onChange={(e) => setSearchParams({...searchParams, type: e.target.value})}
                  >
-                    <option value="">{t('home.search_all_types')}</option>
-                    <option value="villa">{t('home.search_villa')}</option>
-                    <option value="plot">{t('home.search_plot')}</option>
-                    <option value="flat">{t('home.search_flat')}</option>
+                    <option value="">All Types</option>
+                    <option value="villa">Luxury Villa</option>
+                    <option value="plot">Plot</option>
+                    <option value="flat">Flat</option>
                  </select>
               </div>
               <div className="flex flex-col gap-2">
-                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">{t('home.search_budget')}</label>
+                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">Budget</label>
                  <select className="w-full appearance-none rounded-full border-none bg-background py-3.5 px-6 text-sm font-medium outline-none ring-1 ring-border focus:ring-2 focus:ring-primary transition-all">
-                    <option>{t('home.search_any_budget')}</option>
+                    <option>Any Budget</option>
                     <option>Under ₹50L</option>
                     <option>₹50L - ₹1Cr</option>
                     <option>Above ₹1Cr</option>
                  </select>
               </div>
               <div className="flex flex-col gap-2">
-                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">{t('home.search_purpose')}</label>
+                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-2">Purpose</label>
                  <select 
                    className="w-full appearance-none rounded-full border-none bg-background py-3.5 px-6 text-sm font-medium outline-none ring-1 ring-border focus:ring-2 focus:ring-primary transition-all"
                    value={searchParams.purpose}
                    onChange={(e) => setSearchParams({...searchParams, purpose: e.target.value})}
                  >
-                    <option value="buy">{t('home.search_buy')}</option>
-                    <option value="rent">{t('home.search_rent')}</option>
+                    <option value="buy">Buy</option>
+                    <option value="rent">Rent</option>
                  </select>
               </div>
               <Button type="submit" size="lg" className="h-11 sm:h-12 w-full rounded-full bg-primary text-secondary hover:bg-gradient-to-r hover:from-primary hover:to-brand shadow-lg sm:col-span-2 lg:col-span-1 text-sm sm:text-base">
-                 <Search className="mr-2 h-4 w-4" /> {t('home.search_btn', 'Search')}
+                 <Search className="mr-2 h-4 w-4" /> Search
               </Button>
            </form>
         </div>
 
         {/* Trust Badges */}
         <div className="mt-6 sm:mt-8 flex w-full flex-wrap justify-center gap-4 sm:gap-6 gap-y-3 sm:gap-y-4 font-sub text-xs sm:text-sm font-semibold text-white/90">
-           <div className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-brand" /> {t('home.trust_verified')}</div>
-           <div className="flex items-center gap-2"><Award className="h-5 w-5 text-brand" /> {t('home.trust_support')}</div>
-           <div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-brand" /> {t('home.trust_clients')}</div>
-           <div className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-brand" /> {t('home.trust_genuine')}</div>
+           <div className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-brand" /> Verified Listings</div>
+           <div className="flex items-center gap-2"><Award className="h-5 w-5 text-brand" /> Registration Support</div>
+           <div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-brand" /> 5000+ Happy Clients</div>
+           <div className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-brand" /> 100% Genuine Deals</div>
         </div>
       </div>
     </section>
@@ -168,7 +167,6 @@ function SectionHeading({ kicker, title, subtitle, light = false }: { kicker?: s
 }
 
 function Index() {
-  const { t } = useTranslation();
   const { data: featured } = useSuspenseQuery(featuredQO);
   const { data: projects } = useSuspenseQuery(projectsQO);
 
@@ -223,12 +221,12 @@ function Index() {
       {/* IVORY BACKGROUND - Why Choose Us */}
       <section className="bg-background px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading kicker={t('home.why_kicker', 'The Khammam Difference')} title={t('home.why_title', 'Why Choose Us')} />
+          <SectionHeading kicker="The Khammam Difference" title="Why Choose Us" />
           <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {[
-              { icon: ShieldCheck, title: t('home.why_integrity_title'), text: t('home.why_integrity_txt') },
-              { icon: Award, title: t('home.why_service_title'), text: t('home.why_service_txt') },
-              { icon: Home, title: t('home.why_curation_title'), text: t('home.why_curation_txt') },
+              { icon: ShieldCheck, title: "Uncompromising Integrity", text: "Every property is subjected to rigorous physical and legal verification before joining our portfolio." },
+              { icon: Award, title: "White-Glove Service", text: "From initial consultation to final registration, our dedicated concierge ensures a seamless experience." },
+              { icon: Home, title: "Bespoke Curation", text: "We don't just sell properties; we match extraordinary clients with their perfect architectural counterparts." },
             ].map((f, i) => (
               <div key={i} className="group relative overflow-hidden rounded-2xl sm:rounded-[24px] bg-card p-6 sm:p-8 md:p-10 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                 <div className="mb-5 sm:mb-8 inline-flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-transparent text-primary">
@@ -248,7 +246,7 @@ function Index() {
       {/* CREAM BACKGROUND - Testimonials */}
       <section className="bg-card px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading kicker={t('home.voices_kicker', 'Client Stories')} title={t('home.voices_title', 'Voices of Trust')} />
+          <SectionHeading kicker="Client Stories" title="Voices of Trust" />
           <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {[
               { name: "Rajesh V.", role: "Property Investor", text: "Khammam Real Estates operates on a different level of professionalism. The transaction for my commercial plot was exceptionally transparent." },
@@ -281,20 +279,20 @@ function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
         <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-8 text-center animate-fade-up">
           <div>
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-primary mb-3 sm:mb-4">{t('home.cta_kicker', 'Your Next Chapter')}</p>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">{t('home.cta_title', "Can't Find What You're Looking For?")}</h2>
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-primary mb-3 sm:mb-4">Your Next Chapter</p>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Can't Find What You're Looking For?</h2>
             <p className="mx-auto mt-4 sm:mt-6 max-w-2xl font-sub text-sm sm:text-base md:text-lg text-white/70">
-              {t('home.cta_sub', 'Submit your bespoke requirements. Our dedicated team will leverage our private network to find matches within 48 hours.')}
+              Submit your bespoke requirements. Our dedicated team will leverage our private network to find matches within 48 hours.
             </p>
           </div>
           <Link to="/requirements">
               <Button size="lg" className="h-12 sm:h-14 rounded-full px-8 sm:px-10 text-base sm:text-lg font-bold shadow-lg hover:shadow-primary/50">
-               {t('home.cta_btn', 'Post Requirement')} <ArrowRight className="ml-2 h-5 w-5" />
+               Post Requirement <ArrowRight className="ml-2 h-5 w-5" />
              </Button>
           </Link>
           
           <div className="mt-8 sm:mt-12 w-full pt-8 sm:pt-12 border-t border-white/10">
-             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/50 mb-6 sm:mb-8">{t('home.connections', 'Direct Connections')}</p>
+             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/50 mb-6 sm:mb-8">Direct Connections</p>
              <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
                <a href="https://wa.me/918186871820" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-5 rounded-2xl sm:rounded-[20px] bg-[#25D366] text-white hover:bg-[#20bd5a] transition-all shadow-lg hover:-translate-y-1">
                  <div className="bg-white/20 p-1.5 sm:p-2 rounded-full"><MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" /></div>
